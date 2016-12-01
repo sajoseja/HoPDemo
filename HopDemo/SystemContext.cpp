@@ -27,8 +27,6 @@ void SystemContext::setMotionFrameId(int _motionFrameId) { motionFrameId = _moti
 
 Controller& SystemContext::getMotionCtrl(void) { return motionCtrl; }
 
-const Object& SystemContext::getObj(int idx) const { return objs[idx]; }
+int SystemContext::getNumOfObjs(void) const { return objs.size(); }
+Object& SystemContext::getObj(int idx) { return objs[idx]; }
 void SystemContext::pushObj(const Object& obj) { objs.push_back(obj); }
-
-Camera& SystemContext::getCam(int idx) { return cams[idx]; }
-void SystemContext::pushCam(const Camera& cam) { cams.push_back(cam); }

@@ -4,7 +4,6 @@
 
 #include "Leap.h"
 #include "Object.h"
-#include "Camera.h"
 
 using namespace Leap;
 
@@ -18,7 +17,6 @@ private:
     Controller motionCtrl;      ///< motion controller.
 
     std::vector<Object> objs;   ///< objects to draw.
-    std::vector<Camera> cams;   ///< cameras.
 
 public:
     SystemContext();
@@ -36,9 +34,7 @@ public:
 
     Controller& getMotionCtrl(void);
 
-    const Object& getObj(int idx) const;
+    int getNumOfObjs(void) const;
+    Object& getObj(int idx);
     void pushObj(const Object& obj);
-
-    Camera& getCam(int idx);
-    void pushCam(const Camera& cam);
 };

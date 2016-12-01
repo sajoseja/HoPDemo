@@ -24,9 +24,6 @@
     <ClCompile Include="Object.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Camera.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SystemContext.h">
@@ -35,13 +32,8 @@
     <ClInclude Include="Object.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Camera.h">
+    <ClInclude Include="hop.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="cube.txt">
-      <Filter>리소스 파일</Filter>
-    </Text>
   </ItemGroup>
 </Project>
