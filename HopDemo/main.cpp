@@ -33,10 +33,10 @@ void main(int argc, char **argv) {
     glutIdleFunc(idleCallback);
     Hop::setDisplayFunc(displayCallback);
     Hop::setReshapeFunc(reshapeCallback);
-    Hop::setSize(10.0f);
+    Hop::setSize(5.0f);
 
     // rendering setting.
-    glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+    glClearColor(0.01f, 0.01f, 0.01f, 1.0f);
     glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 
     glFrontFace(GL_CCW);
@@ -55,8 +55,8 @@ void idleCallback(void) {
         return;
     SC.setMotionFrameId(frame.id());
 
-    const float SWIPE_SENSE = 0.01;
-    const float CIRCLE_SENSE = 0.2;
+    const float SWIPE_SENSE = 0.018;
+    const float CIRCLE_SENSE = 0.15;
 
     float startSize = Hop::getSize();
 
@@ -104,7 +104,7 @@ void idleCallback(void) {
             (*it).state() == Gesture::STATE_UPDATE) {
             CircleGesture circle = (*it);
             if (circle.pointable().direction().angleTo(circle.normal()) <= PI / 2)
-                Hop::setSize(std::max(startSize - CIRCLE_SENSE * circle.progress(), 1.0f));
+                Hop::setSize(std::max(startSize - CIRCLE_SENSE * circle.progress(), 3.5f));
             else
                 Hop::setSize(std::max(startSize + CIRCLE_SENSE * circle.progress(), 1.0f));
 
