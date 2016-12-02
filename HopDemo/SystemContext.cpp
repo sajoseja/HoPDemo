@@ -6,7 +6,7 @@ SystemContext::SystemContext() {
 
     motionFrameId = -1;
     while (!motionCtrl.isConnected());
-
+    
     motionCtrl.enableGesture(Gesture::TYPE_SWIPE);
     motionCtrl.enableGesture(Gesture::TYPE_CIRCLE);
     motionCtrl.config().setFloat("Gesture.Swipe.MinLength", 1.0f);

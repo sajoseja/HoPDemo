@@ -26,14 +26,14 @@ void main(int argc, char **argv) {
     glutInitWindowSize(SC.getWndW(), SC.getWndH());
     SC.setWndId(glutCreateWindow("HopDemo"));
     SC.pushObj(Object(
-        "Model/ahri/b_ahri_b.obj",
-        "Model/ahri/b_ahri_b.mtl"));
+        "Model/cat/cat.obj",
+        "Model/cat/cat.mtl"));
 
     // register callbacks.
     glutIdleFunc(idleCallback);
     Hop::setDisplayFunc(displayCallback);
     Hop::setReshapeFunc(reshapeCallback);
-    Hop::setSize(1000.0f);
+    Hop::setSize(10.0f);
 
     // rendering setting.
     glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
@@ -55,8 +55,8 @@ void idleCallback(void) {
         return;
     SC.setMotionFrameId(frame.id());
 
-    const float SWIPE_SENSE = 0.001;
-    const float CIRCLE_SENSE = 0.05;
+    const float SWIPE_SENSE = 0.01;
+    const float CIRCLE_SENSE = 0.2;
 
     float startSize = Hop::getSize();
 
@@ -77,6 +77,8 @@ void idleCallback(void) {
 
                 float _pi = obj.getPi() + SWIPE_SENSE * delx;
                 float _theta = obj.getTheta() + SWIPE_SENSE * dely;
+                _pi = (_pi < 0.0f) ? _pi + 360.0f : _pi;
+                _theta = (_theta < 0.0f) ? _theta + 360.0f : _theta;
                 _pi = (_pi >= 360.0f) ? _pi - 360.0f : _pi;
                 _theta = (_theta >= 360.0f) ? _theta - 360.0f : _theta;
 
@@ -131,8 +133,8 @@ void displayCallback(HopSide side) {
         Object& obj = SC.getObj(i);
         
         glPushMatrix();
-        glRotatef(obj.getPi(), 0.0f, 1.0f, 0.0f);
         glRotatef(obj.getTheta(), 1.0f, 0.0f, 0.0f);
+        glRotatef(obj.getPi(), 0.0f, 1.0f, 0.0f);
         obj.draw(1.0f);
         glPopMatrix();
     }
